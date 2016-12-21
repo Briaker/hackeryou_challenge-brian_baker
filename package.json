@@ -1,0 +1,16 @@
+{
+  "name": "oak",
+  "version": "0.0.1",
+  "private": true,
+  "devDependencies": {
+    "autoprefixer-stylus": "0.10.0",
+    "browser-sync": "2.18.5",
+    "concurrently": "3.0.0",
+    "stylus": "0.54.5"
+  },
+  "scripts": {
+    "start": "concurrently --names \"browsersync, stylus\" --prefix name \"npm run browsersync\" \"npm run watch\"",
+    "browsersync": "browser-sync start --server --files 'src/*, !src/css/style.styl'",
+    "watch": "stylus -u autoprefixer-stylus -w ./src/css/style.styl -o ./src/css/style.css"
+  }
+}
