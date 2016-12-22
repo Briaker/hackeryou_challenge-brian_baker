@@ -1,6 +1,23 @@
 // Import all partials
 // @require './_*.styl'
 
+@font-face 
+  font-family "socialMediaIcons"
+  src: url("../fonts/Socialico.ttf")
+
+
+a
+  text-decoration none
+
+  color #111
+
+  &:visited
+    color #111
+
+  &:hover
+    color #7beec7
+
+
 body
   display: flex
   flex-flow row wrap
@@ -140,13 +157,6 @@ body
       a
         margin 1em
         white-space nowrap
-        text-decoration none
-
-        &:visited
-          color #111
-
-        &:hover
-          color #7beec7
 
       &.menu-opened
         transition all 0.5s
@@ -408,134 +418,35 @@ body
   padding 0px
   display flex
   flex-flow row wrap
-
-  .address
+  
+  .address, .social-media, .contact
     flex-basis 30%
     flex-grow 1
     display flex
     justify-content center
-    // align-items center
+    align-items center
     flex-flow column
+
+  .address, .contact
     text-align left
 
   .social-media
-    flex-basis 30%
-    flex-grow 1
-    display flex
-    justify-content center
-    align-items center
-    flex-flow column
+    text-align center
+    .icons
+      display flex
+      justify-content center
+      flex-flow row wrap
+      
+      .icon
+        margin 1em 0.5em
 
-  .contact
-    flex-basis 30%
-    flex-grow 1
-    display flex
-    justify-content center
-    align-items center
-    flex-flow column
-    text-align left
-
-  .inner-footer
-    width calc(100% - 100px)
-    height calc(100% - 100px)
-    background #FFF
-    margin 50px
+      font-family "socialMediaIcons"
+      font-size larger
+      margin-bottom 1em
     
   h3, p
-    line-height 0
-      
+    line-height 0.5em
+    letter-spacing 0.15em
 
-
-
-
-// h1, a
-//     color #111
-//     text-decoration inherit
-
-// button a
-//     color inherit
-//     text-decoration inherit
-
-// header.top
-//   text-align center
-//   h1
-//     font-size 14.4rem
-//     line-height 0.7 // this font has a wacky baseline
-//     display flex
-//     justify-content center
-
-//   h3
-//     margin 0
-//     font-size 2rem
-//     color orange
-//     position relative
-//     display inline-block
-//     span
-//       background lightgray
-//       position relative
-//       z-index 2
-//       padding-left 1rem
-//       padding-right 1rem
-//     &:before, &:after
-//       display block
-//       z-index 1
-//       background black
-//       position absolute
-//       width 130%
-//       height 1px
-//       content ''
-//       top 5px
-//       margin-left -15%
-//     &:after
-//       top auto
-//       bottom 7px
-
-// ul
-//   list-style none
-//   margin 0
-//   padding 0
-
-// button, input[type=submit]
-//   text-transform uppercase
-//   background none
-//   border 1px solid black
-//   font-weight 600
-//   font-size 1.5rem
-//   font-family 'Open Sans'
-//   transition all 0.2s
-//   position relative
-//   z-index 2
-//   &[disabled]
-//     color red
-//     background white
-//     border-color red
-//     transform rotate(-10deg) scale(2) translateX(50%) translateY(-50%)
-//     &:hover
-//       color red
-//       cursor not-allowed
-//     &:after
-//       display none
-//   &:after
-//     content ''
-//     z-index -1
-//     display block
-//     background black
-//     position absolute
-//     width 100%
-//     height 0%
-//     left 0
-//     top 0
-//     transition all 0.2s
-//   &:hover, &:focus
-//     color white
-//     outline 0
-//     &:after
-//       height 100%
-//   // variants
-//   &.warning
-//     &:after
-//       background red
-//   &.success
-//     &:after
-//       background green
-// top right bottom left
+  h3
+    text-transform uppercase

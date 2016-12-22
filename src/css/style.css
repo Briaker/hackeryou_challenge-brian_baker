@@ -1,3 +1,17 @@
+@font-face {
+  font-family: "socialMediaIcons";
+  src: url("../fonts/Socialico.ttf");
+}
+a {
+  text-decoration: none;
+  color: #111;
+}
+a:visited {
+  color: #111;
+}
+a:hover {
+  color: #7beec7;
+}
 body {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -184,13 +198,6 @@ body {
 .nav-bar .menu-wrapper .menu a {
   margin: 1em;
   white-space: nowrap;
-  text-decoration: none;
-}
-.nav-bar .menu-wrapper .menu a:visited {
-  color: #111;
-}
-.nav-bar .menu-wrapper .menu a:hover {
-  color: #7beec7;
 }
 .nav-bar .menu-wrapper .menu.menu-opened {
   -webkit-transition: all 0.5s;
@@ -520,40 +527,8 @@ body {
   -ms-flex-flow: row wrap;
       flex-flow: row wrap;
 }
-.footer .address {
-  -ms-flex-preferred-size: 30%;
-      flex-basis: 30%;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-flex-flow: column;
-      flex-flow: column;
-  text-align: left;
-}
-.footer .social-media {
-  -ms-flex-preferred-size: 30%;
-      flex-basis: 30%;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-flow: column;
-      flex-flow: column;
-}
+.footer .address,
+.footer .social-media,
 .footer .contact {
   -ms-flex-preferred-size: 30%;
       flex-basis: 30%;
@@ -571,15 +546,35 @@ body {
           align-items: center;
   -ms-flex-flow: column;
       flex-flow: column;
+}
+.footer .address,
+.footer .contact {
   text-align: left;
 }
-.footer .inner-footer {
-  width: calc(100% - 100px);
-  height: calc(100% - 100px);
-  background: #fff;
-  margin: 50px;
+.footer .social-media {
+  text-align: center;
+}
+.footer .social-media .icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-flow: row wrap;
+      flex-flow: row wrap;
+  font-family: "socialMediaIcons";
+  font-size: larger;
+  margin-bottom: 1em;
+}
+.footer .social-media .icons .icon {
+  margin: 1em 0.5em;
 }
 .footer h3,
 .footer p {
-  line-height: 0;
+  line-height: 0.5em;
+  letter-spacing: 0.15em;
+}
+.footer h3 {
+  text-transform: uppercase;
 }
