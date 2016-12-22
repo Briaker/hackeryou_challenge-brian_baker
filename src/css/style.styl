@@ -1,94 +1,278 @@
 // Import all partials
 // @require './_*.styl'
 
-h1 a
-    color inherit
-    text-decoration inherit
+body
+  display: flex
+  justify-content center
+  font-family 'Raleway', sans-serif
+  font-weight 400
 
-button a
-    color inherit
-    text-decoration inherit
 
-header.top
-  text-align center
-  h1
-    font-size 14.4rem
-    line-height 0.7 // this font has a wacky baseline
-    display flex
-    justify-content center
+.wrapper
+  min-height 800px
+  max-width: 1170px
+  width 100%
+  margin 0px
+  padding 0px
+  display flex
+  flex-flow row wrap
+  
 
-  h3
-    margin 0
-    font-size 2rem
-    color orange
-    position relative
-    display inline-block
-    span
-      background lightgray
-      position relative
-      z-index 2
-      padding-left 1rem
-      padding-right 1rem
-    &:before, &:after
-      display block
-      z-index 1
-      background black
-      position absolute
-      width 130%
-      height 1px
-      content ''
-      top 5px
-      margin-left -15%
-    &:after
-      top auto
-      bottom 7px
+.wrapper > *
+  margin .5em
+  flex-basis 100%
+  height 500px
+  
+  @media all and (min-width: 600px) 
+    flex-basis 100%
+    background #2e2e6e
+  
+  @media all and (min-width: 800px) 
+    flex-basis 100%
+    background #1e6e1e
 
-ul
-  list-style none
-  margin 0
-  padding 0
-
-button, input[type=submit]
+.title
+  height 3em
   text-transform uppercase
-  background none
-  border 1px solid black
-  font-weight 600
-  font-size 1.5rem
-  font-family 'Open Sans'
-  transition all 0.2s
   position relative
-  z-index 2
-  &[disabled]
-    color red
-    background white
-    border-color red
-    transform rotate(-10deg) scale(2) translateX(50%) translateY(-50%)
-    &:hover
-      color red
-      cursor not-allowed
-    &:after
-      display none
-  &:after
-    content ''
-    z-index -1
-    display block
-    background black
+  
+  h1, h2, h3
+    font-family 'Source Code Pro', monospace
+    font-weight 600
+    word-spacing 0.25em
+    
+
+.title-underline
+    border-bottom 1px solid #111
     position absolute
-    width 100%
-    height 0%
-    left 0
-    top 0
-    transition all 0.2s
-  &:hover, &:focus
-    color white
-    outline 0
-    &:after
-      height 100%
-  // variants
-  &.warning
-    &:after
-      background red
-  &.success
-    &:after
-      background green
+    height 2.75em
+    width 2.5em
+
+
+.subtitle
+  text-transform uppercase
+
+
+.nav-bar
+  display flex
+  align-items center
+  height 100px
+  
+  .oak
+    font-family 'Kaushan Script', cursive
+    h1
+      margin 0 0.4em 0 0.2em
+    
+    .strike-through
+      border-bottom 3px double #111
+      position relative
+      top -1.5em
+  
+  .menu-wrapper
+    flex-grow 10
+    text-align right
+    display flex
+    justify-content flex-end
+    align-items center
+    
+    .menu-toggle
+      padding-left 0.5em
+      position relative
+      flex-basis 25px
+      width 25px
+      height 12px
+      z-index 1
+      user-select none
+      
+      input[type=checkbox]
+        display block
+        width 25px
+        height 25px
+        position absolute
+        top -10px
+        left 2px
+        cursor pointer
+        opacity 1
+        z-index 2
+        background red
+
+        ~ ul
+          transform scale(1.0, 1.0)
+          opacity 1
+      
+      .icon
+         background-image url("/src/img/hamburger.png")
+         width 25px
+         height 12px
+
+      #menu
+        opacity 1
+        position absolute
+        width 300px
+        margin -100px 0 0 -50px
+        padding 50px
+        padding-top 3em
+
+        background #ededed
+        list-style-type none
+
+        transform-origin 0% 0%
+        transform translate(-100%, 0)
+
+        transition transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0)
+
+        li
+          padding 10px 0
+          font-size 22px
+
+
+.header
+  height 610px
+  padding-left 6em
+  font-family 'Poiret One', cursive
+  text-transform uppercase
+  font-weight 900
+  display flex
+  flex-flow row wrap
+  align-content center
+  
+  .heading
+    height 5em
+    flex-basis 100%
+    letter-spacing 0.5em
+    
+    .highlight
+      padding 0.5em
+      font-weight 100
+      background #7beec7
+  
+  .sub-heading
+    font-weight 100
+    height 5em
+    
+    ::after
+      font-weight 100
+      padding-left 0.3em
+      font-size 2em
+      vertical-align -15%
+      content "|"
+
+
+.history
+  background #6e6e1e
+  @media all and (min-width: 800px) 
+    flex-basis 0px
+    flex-grow 1
+
+.history-image
+  background #6e6e1e
+  @media all and (min-width: 800px) 
+    flex-grow 0
+    flex-shrink 0
+    flex-basis 471px
+
+.choose
+  background #6e6e1e
+  @media all and (min-width: 800px) 
+    flex-basis 100%
+    flex-grow 10
+
+
+.choose-box
+  @media all and (min-width: 800px) 
+    background #2e2e6e
+    flex-basis 20%
+    flex-grow 1
+
+
+// h1, a
+//     color #111
+//     text-decoration inherit
+
+// button a
+//     color inherit
+//     text-decoration inherit
+
+// header.top
+//   text-align center
+//   h1
+//     font-size 14.4rem
+//     line-height 0.7 // this font has a wacky baseline
+//     display flex
+//     justify-content center
+
+//   h3
+//     margin 0
+//     font-size 2rem
+//     color orange
+//     position relative
+//     display inline-block
+//     span
+//       background lightgray
+//       position relative
+//       z-index 2
+//       padding-left 1rem
+//       padding-right 1rem
+//     &:before, &:after
+//       display block
+//       z-index 1
+//       background black
+//       position absolute
+//       width 130%
+//       height 1px
+//       content ''
+//       top 5px
+//       margin-left -15%
+//     &:after
+//       top auto
+//       bottom 7px
+
+// ul
+//   list-style none
+//   margin 0
+//   padding 0
+
+// button, input[type=submit]
+//   text-transform uppercase
+//   background none
+//   border 1px solid black
+//   font-weight 600
+//   font-size 1.5rem
+//   font-family 'Open Sans'
+//   transition all 0.2s
+//   position relative
+//   z-index 2
+//   &[disabled]
+//     color red
+//     background white
+//     border-color red
+//     transform rotate(-10deg) scale(2) translateX(50%) translateY(-50%)
+//     &:hover
+//       color red
+//       cursor not-allowed
+//     &:after
+//       display none
+//   &:after
+//     content ''
+//     z-index -1
+//     display block
+//     background black
+//     position absolute
+//     width 100%
+//     height 0%
+//     left 0
+//     top 0
+//     transition all 0.2s
+//   &:hover, &:focus
+//     color white
+//     outline 0
+//     &:after
+//       height 100%
+//   // variants
+//   &.warning
+//     &:after
+//       background red
+//   &.success
+//     &:after
+//       background green
 // top right bottom left
