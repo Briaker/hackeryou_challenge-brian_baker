@@ -1,9 +1,12 @@
 // Import all partials
 // @require './_*.styl'
 
+$tablet = "all and (min-width: 600px)"
+$destop = "all and (min-width: 800px)"
+
 @font-face 
   font-family "socialMediaIcons"
-  src: url("../fonts/Socialico.ttf")
+  src url("../fonts/Socialico.ttf")
 
 
 a
@@ -28,6 +31,21 @@ body
   padding 0
 
 
+.debug-info
+  position absolute
+  top 0 
+  left 0
+  
+  &::before
+    content "Phone"
+    
+    @media $tablet
+      content "Tablet"
+
+    @media $destop
+      content "Normal"
+
+
 .wrapper
   min-height 800px
   max-width: 1170px
@@ -37,22 +55,31 @@ body
   display flex
   flex-flow row wrap
 
+
 .wrapper > *
   margin-bottom 6em
   flex-basis 100%
+  justify-content center
   
-  @media all and (min-width: 600px) 
+  @media $tablet
     flex-basis 100%
+    justify-content center
+    // padding 6em
 
-  @media all and (min-width: 800px) 
-    flex-basis 100%
+  // @media $desktop 
+  //   justify-content flew-start
+  //   flex-basis 100%
+
 
 .inner-wrapper
   // height 400px
   margin-top 5em
   display flex
   flex-flow row wrap
-  justify-content space-between
+  justify-content center
+
+  // @media $destop
+  //   justify-content space-between
 
 
 .title
@@ -89,6 +116,10 @@ body
   
   .oak-logo
     font-family 'Kaushan Script', cursive
+    flex-shrink 0
+    flex-grow 1
+    max-width 6em
+    padding-left 1em
 
     h1
       margin 0 0.4em 0 0.2em
@@ -97,14 +128,16 @@ body
       border-bottom 3px double #111
       position relative
       top -1.5em
+
+    @media $desktop
+      padding-left 0em
   
   .menu-wrapper
-    position relative
-    text-align right
+    // position relative
     display flex
-    flex-grow 10
+    flex-grow 1
+    flex-shrink 10
     justify-content flex-end
-    align-items center
 
     .menu-label
       position relative
@@ -161,6 +194,7 @@ body
       &.menu-opened
         transition all 0.5s
         flex-grow 0.45
+        flex-shrink 0
         width 5em
 
       &:not(.menu-opened)
@@ -170,19 +204,46 @@ body
 
 
 .header
-  height 610px
-  padding-left 6em
+  height calc(610px - 12em)
   font-family 'Poiret One', cursive
   text-transform uppercase
   font-weight 900
   display flex
+  flex-basis 0%
   flex-flow row wrap
+  justify-content center
   align-content center
-  background-image url("/src/img/header.jpg")
-  
+  background-image none
+  background #ededed
+  padding 2em
+  flex-basis 100%
+
+  @media $tablet
+    background-image url("/src/img/header.jpg") 
+    flex-basis 100%
+    padding 6em
+    .heading
+      display flex
+      justify-content center
+      flex-basis 100%
+
+    .sub-heading
+      display flex
+      justify-content center
+      flex-basis 100%
+
+  @media $desktop
+    background-image url("/src/img/header.jpg") 
+    .heading
+      display flex
+      justify-content flex-start
+
+    .sub-heading
+      display flex
+      justify-content flex-start
+
   .heading
     height 5em
-    flex-basis 100%
     letter-spacing 0.5em
     
     .highlight
@@ -203,43 +264,48 @@ body
 
 
 .history
+  padding 0 5em
   height 500px
-  @media all and (min-width: 800px) 
+
+  @media $desktop
+    padding 0 10em 0 0
     flex-basis 0px
     flex-grow 1
 
 
 .history-image
-  background-image url("/src/img/history.jpg")
-  @media all and (min-width: 800px) 
+  background-image none
+
+  @media $desktop
+    background-image url("/src/img/history.jpg")
     flex-grow 0
     flex-shrink 0
     flex-basis 471px
 
 
 .choose
+  padding 0 5em
   .subtitle
     letter-spacing 0.1em
 
-  @media all and (min-width: 800px) 
-    flex-basis 100%
-    flex-grow 1
-
   .info-box
-    padding 0 1.5em
-    
-    @media all and (min-width: 800px) 
+    padding 0
+
+    @media $desktop
       flex-basis 20%
       flex-grow 1
-    
-    &:first-child
-      padding-left 0
-    
-    &:last-child
-      padding-right 0
+      padding 0 1.5em
+
+      &:first-child
+        padding-left 0
+      
+      &:last-child
+        padding-right 0
 
 
 .our-work
+  padding 0 5em
+
   .menu-wrapper
     margin-top 4em
     justify-content flex-start
@@ -247,14 +313,32 @@ body
     .menu-toggle
       margin-left 0em
 
+  // @media $desktop
+  //   padding 0
+
 
 .product-box
   flex-grow 0
   margin-bottom 30px
   width 370px
   height 400px
-  background #feCCCC
   position relative
+
+  // every other
+  // @media $tablet
+  //   &:nth-child(odd)
+  //     border 2px solid red
+
+  // // every 3rd
+  // @media $destop-narrow
+  //   &:nth-child(odd)
+
+  //     border 2px solid blue
+
+  // every 3rd
+  // @media $destop
+  //   &:nth-child(odd)
+  //     border 2px solid green
 
   .overlay 
     opacity 0

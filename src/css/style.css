@@ -26,6 +26,24 @@ body {
   margin: 0;
   padding: 0;
 }
+.debug-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.debug-info::before {
+  content: "Phone";
+}
+@media all and (min-width: 600px) {
+  .debug-info::before {
+    content: "Tablet";
+  }
+}
+@media all and (min-width: 800px) {
+  .debug-info::before {
+    content: "Normal";
+  }
+}
 .wrapper {
   min-height: 800px;
   max-width: 1170px;
@@ -42,17 +60,17 @@ body {
   margin-bottom: 6em;
   -ms-flex-preferred-size: 100%;
       flex-basis: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 @media all and (min-width: 600px) {
   .wrapper > * {
     -ms-flex-preferred-size: 100%;
         flex-basis: 100%;
-  }
-}
-@media all and (min-width: 800px) {
-  .wrapper > * {
-    -ms-flex-preferred-size: 100%;
-        flex-basis: 100%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 }
 .inner-wrapper {
@@ -62,9 +80,9 @@ body {
   display: flex;
   -ms-flex-flow: row wrap;
       flex-flow: row wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .title {
   height: 3em;
@@ -109,6 +127,13 @@ body {
 }
 .nav-bar .oak-logo {
   font-family: 'Kaushan Script', cursive;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  max-width: 6em;
+  padding-left: 1em;
 }
 .nav-bar .oak-logo h1 {
   margin: 0 0.4em 0 0.2em;
@@ -118,21 +143,23 @@ body {
   position: relative;
   top: -1.5em;
 }
+@media $desktop {
+  .nav-bar .oak-logo {
+    padding-left: 0em;
+  }
+}
 .nav-bar .menu-wrapper {
-  position: relative;
-  text-align: right;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-flex: 10;
-      -ms-flex-positive: 10;
-          flex-grow: 10;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-negative: 10;
+      flex-shrink: 10;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 .nav-bar .menu-wrapper .menu-label {
   position: relative;
@@ -205,6 +232,8 @@ body {
   -webkit-box-flex: 0.45;
       -ms-flex-positive: 0.45;
           flex-grow: 0.45;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
   width: 5em;
 }
 .nav-bar .menu-wrapper .menu:not(.menu-opened) {
@@ -216,24 +245,79 @@ body {
   width: 0;
 }
 .header {
-  height: 610px;
-  padding-left: 6em;
+  height: calc(610px - 12em);
   font-family: 'Poiret One', cursive;
   text-transform: uppercase;
   font-weight: 900;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-preferred-size: 0%;
+      flex-basis: 0%;
   -ms-flex-flow: row wrap;
       flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -ms-flex-line-pack: center;
       align-content: center;
-  background-image: url("/src/img/header.jpg");
+  background-image: none;
+  background: #ededed;
+  padding: 2em;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+}
+@media all and (min-width: 600px) {
+  .header {
+    background-image: url("/src/img/header.jpg");
+    -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+    padding: 6em;
+  }
+  .header .heading {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+  }
+  .header .sub-heading {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+  }
+}
+@media $desktop {
+  .header {
+    background-image: url("/src/img/header.jpg");
+  }
+  .header .heading {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  .header .sub-heading {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
 }
 .header .heading {
   height: 5em;
-  -ms-flex-preferred-size: 100%;
-      flex-basis: 100%;
   letter-spacing: 0.5em;
 }
 .header .heading .highlight {
@@ -253,10 +337,12 @@ body {
   content: "|";
 }
 .history {
+  padding: 0 5em;
   height: 500px;
 }
-@media all and (min-width: 800px) {
+@media $desktop {
   .history {
+    padding: 0 10em 0 0;
     -ms-flex-preferred-size: 0px;
         flex-basis: 0px;
     -webkit-box-flex: 1;
@@ -265,10 +351,11 @@ body {
   }
 }
 .history-image {
-  background-image: url("/src/img/history.jpg");
+  background-image: none;
 }
-@media all and (min-width: 800px) {
+@media $desktop {
   .history-image {
+    background-image: url("/src/img/history.jpg");
     -webkit-box-flex: 0;
         -ms-flex-positive: 0;
             flex-grow: 0;
@@ -278,35 +365,33 @@ body {
         flex-basis: 471px;
   }
 }
+.choose {
+  padding: 0 5em;
+}
 .choose .subtitle {
   letter-spacing: 0.1em;
 }
-@media all and (min-width: 800px) {
-  .choose {
-    -ms-flex-preferred-size: 100%;
-        flex-basis: 100%;
-    -webkit-box-flex: 1;
-        -ms-flex-positive: 1;
-            flex-grow: 1;
-  }
-}
 .choose .info-box {
-  padding: 0 1.5em;
+  padding: 0;
 }
-@media all and (min-width: 800px) {
+@media $desktop {
   .choose .info-box {
     -ms-flex-preferred-size: 20%;
         flex-basis: 20%;
     -webkit-box-flex: 1;
         -ms-flex-positive: 1;
             flex-grow: 1;
+    padding: 0 1.5em;
+  }
+  .choose .info-box:first-child {
+    padding-left: 0;
+  }
+  .choose .info-box:last-child {
+    padding-right: 0;
   }
 }
-.choose .info-box:first-child {
-  padding-left: 0;
-}
-.choose .info-box:last-child {
-  padding-right: 0;
+.our-work {
+  padding: 0 5em;
 }
 .our-work .menu-wrapper {
   margin-top: 4em;
@@ -324,7 +409,6 @@ body {
   margin-bottom: 30px;
   width: 370px;
   height: 400px;
-  background: #fecccc;
   position: relative;
 }
 .product-box .overlay {
