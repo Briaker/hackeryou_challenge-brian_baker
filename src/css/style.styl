@@ -1,8 +1,8 @@
 // Import all partials
 // @require './_*.styl'
 
-$tablet = "all and (min-width: 600px)"
-$destop = "all and (min-width: 800px)"
+$tablet = "(min-width: 768px)"
+$desktop = "(min-width: 1170px)"
 
 @font-face 
   font-family "socialMediaIcons"
@@ -42,8 +42,8 @@ body
     @media $tablet
       content "Tablet"
 
-    @media $destop
-      content "Normal"
+    @media $desktop
+      content "Desktop"
 
 
 .wrapper
@@ -53,10 +53,14 @@ body
   margin 0px
   padding 0px
   display flex
+  flex-basis 100%
+  flex-shrink 0
+  flex-grow 1
   flex-flow row wrap
 
 
 .wrapper > *
+  // &:not(:last-child)
   margin-bottom 6em
   flex-basis 100%
   justify-content center
@@ -78,34 +82,56 @@ body
   flex-flow row wrap
   justify-content center
 
-  // @media $destop
+  // @media $desktop
   //   justify-content space-between
 
 
 .title
   height 3em
-  text-transform uppercase
   position relative
   flex-basis 100%
   flex-grow 10
+  display flex
+  justify-content center
+  text-transform uppercase
   letter-spacing 0.2em
+  white-space nowrap
+  margin-bottom 2em
   
   h1, h2, h3
     font-family 'Source Code Pro', monospace
     font-weight 600
-    
+  
+  @media $tablet
+    justify-content flex-start
+
+  @media $desktop
+    justify-content flex-start
 
 .title-underline
     border-bottom 1px solid #111
     position absolute
-    height 2.75em
+    height 3.75em
     width 2.5em
+  
+    @media $tablet
+      left 0
+
+    @media $desktop
+      left 0
 
 
 .subtitle
   flex-basis 100%
   flex-grow 1
   text-transform uppercase
+  text-align center
+
+  @media $tablet
+    text-align left
+
+  @media $desktop
+    text-align left
 
 
 .nav-bar
@@ -209,7 +235,6 @@ body
   text-transform uppercase
   font-weight 900
   display flex
-  flex-basis 0%
   flex-flow row wrap
   justify-content center
   align-content center
@@ -284,12 +309,16 @@ body
 
 
 .choose
-  padding 0 5em
+  padding 0 4em
+  
   .subtitle
     letter-spacing 0.1em
 
   .info-box
     padding 0
+
+    &:not(:last-child)
+      margin-bottom 2em
 
     @media $desktop
       flex-basis 20%
@@ -313,106 +342,118 @@ body
     .menu-toggle
       margin-left 0em
 
-  // @media $desktop
-  //   padding 0
+  @media $desktop
+    padding 0
 
 
 .product-box
   flex-grow 0
   margin-bottom 30px
-  width 370px
-  height 400px
+  width calc(370px)
+  height calc(430px - 30px)
   position relative
 
   // every other
-  // @media $tablet
-  //   &:nth-child(odd)
-  //     border 2px solid red
-
-  // // every 3rd
-  // @media $destop-narrow
-  //   &:nth-child(odd)
-
-  //     border 2px solid blue
+  @media $tablet
+    &:nth-child(odd)
+      margin-right 30px
 
   // every 3rd
-  // @media $destop
-  //   &:nth-child(odd)
-  //     border 2px solid green
+  // @media $desktop
+  //   &:nth-child(3n+2)
+  //     margin-right 30px
+  //     margin-left 30px
+
+  @media $desktop
+    &:nth-child(odd)
+      margin-right 0
+    &:nth-child(3n+2)
+      margin-right 30px
+      margin-left 30px
+
 
   .overlay 
     opacity 0
     position absolute
     top 0
     left 0
-    width 327px
-    height 357px
+    width calc(375px - 40px - 60px)
+    height calc(395px - 40px)
     padding 20px
-    background rgba(123, 238, 199, 0.75)
     z-index 2
+  // .overlay 
+  //   opacity 0
+  //   position absolute
+  //   top 0
+  //   left 0
+  //   width calc(375px - 40px - 60px)
+  //   height calc(395px - 40px)
+  //   padding 20px
+  //   background rgba(123, 238, 199, 0.75)
+  //   z-index 2
     
-    &:hover
-      opacity 1
-      border 3px solid #000
+  //   &:hover
+  //     opacity 1
+  //     border 3px solid #000
   
-    .cross
-      position relative
-      left 40%
-      top 20%
-      width 70px
-      height 70px
+  //   .cross
+  //     position relative
+  //     left 40%
+  //     top 20%
+  //     width 70px
+  //     height 70px
       
-      .vertical
-        position relative
-        height 100%
-        left 50%
-        top 50%
-        border-left 1px solid #000
+  //     .vertical
+  //       position relative
+  //       height 100%
+  //       left 50%
+  //       top 50%
+  //       border-left 1px solid #000
       
-      .horizontal
-        width 100%
-        border-top 1px solid #000
+  //     .horizontal
+  //       width 100%
+  //       border-top 1px solid #000
 
-    .heart
-      font-family 'Source Code Pro', monospace
+  //   .heart
+  //     font-family 'Source Code Pro', monospace
       
-      .heart-symbol
-        font-weight 100
-        padding 0
-        margin 0
-        position relative
-        left 6px
-        top -10px
+  //     .heart-symbol
+  //       font-weight 100
+  //       padding 0
+  //       margin 0
+  //       position relative
+  //       left 6px
+  //       top -10px
       
-      .heart-value
-        margin 0
-        padding 0
-        line-height 0
-        position relative
-        top -10px
+  //     .heart-value
+  //       margin 0
+  //       padding 0
+  //       line-height 0
+  //       position relative
+  //       top -10px
     
-    .product-titles
-      position relative
-      height 3em
-      top 55%
-      text-transform uppercase
+  //   .product-titles
+  //     position relative
+  //     height 3em
+  //     top 55%
+  //     text-transform uppercase
       
-      .product-title
-        h3
-          font-weight 900
-        margin 0
-        padding 0
-        line-height 0
-        position relative
+  //     .product-title
+  //       h3
+  //         font-weight 900
+  //       margin 0
+  //       padding 0
+  //       line-height 0
+  //       position relative
       
-      .product-subtitle
-        h4
-          font-weight 100
-        font-weight 100
-        margin 0
-        padding 0
-        line-height 0
-        position relative
+  //     .product-subtitle
+  //       h4
+  //         font-weight 100
+  //       font-weight 100
+  //       margin 0
+  //       padding 0
+  //       line-height 0
+  //       position relative
 
 
 .refresh
@@ -426,10 +467,11 @@ body
   flex-flow row wrap
   flex-basis 100%
   justify-content center
-  align-items center
-  height 325px
+  // height 325px
 
   .left
+    min-width 400px
+    max-height 325px
     background #7beec7
     height 100%
     flex-basis 50%
@@ -442,12 +484,19 @@ body
     letter-spacing 0.1em
     
     .left-inner
+      width calc(100% - 100px)
+      height calc(100% - 100px)
+      margin 50px
+      display flex
+      justify-content center
+      flex-flow column
       h1
         font-weight 100
         padding 0
         margin 0
 
   .right
+    max-height 325px
     background-image url("/src/img/clock.jpg")
     height 100%
     flex-basis 50%
@@ -495,42 +544,81 @@ body
     // 75e2bd dark
 
 .footer
-  height 300px
+  min-height 300px
   background #f4f4f4
   width 100%
-  margin 0px
-  padding 0px
+  margin 6em 0 0 0
+  padding 1em 0
   display flex
   flex-flow row wrap
-  
-  .address, .social-media, .contact
-    flex-basis 30%
-    flex-grow 1
-    display flex
-    justify-content center
-    align-items center
-    flex-flow column
 
-  .address, .contact
-    text-align left
-
-  .social-media
-    text-align center
-    .icons
-      display flex
-      justify-content center
-      flex-flow row wrap
-      
-      .icon
-        margin 1em 0.5em
-
-      font-family "socialMediaIcons"
-      font-size larger
-      margin-bottom 1em
-    
   h3, p
     line-height 0.5em
     letter-spacing 0.15em
 
   h3
     text-transform uppercase
+
+  .address, .social-media, .contact
+    flex-basis 100%
+    flex-grow 1
+    display flex
+    justify-content center
+    align-items center
+    flex-flow column
+    order 2
+    text-align center
+    margin 1em 0
+
+    @media $tablet
+      flex-basis 30%
+
+    @media $desktop
+      flex-basis 30%
+
+  .address, .contact
+    @media $tablet
+      text-align left
+
+    @media $desktop
+      text-align left
+
+  .address 
+    @media $tablet
+      order 1
+
+    @media $desktop
+      order 1
+
+  .contact
+    @media $tablet
+      order 3
+
+    @media $desktop
+      order 3
+
+  .social-media
+    text-align center
+    flex-grow 2
+    order 3
+
+    .icons
+      display flex
+      justify-content center
+      flex-flow row
+      
+      .icon
+        margin 1em 0.5em
+
+      font-family "socialMediaIcons"
+      font-size larger
+      margin-bottom 0.8em
+
+    h3
+      line-height 1em
+
+    @media $tablet
+      order 2
+
+    @media $desktop
+      order 2
