@@ -27,7 +27,7 @@ body {
   padding: 0;
 }
 .debug-info {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
 }
@@ -169,11 +169,19 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-flow: column wrap;
+      flex-flow: column wrap;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 100px;
+  min-height: 100px;
   margin-bottom: 0.75em;
+}
+@media (min-width: 1170px) {
+  .nav-bar {
+    -ms-flex-flow: row wrap;
+        flex-flow: row wrap;
+  }
 }
 .nav-bar .oak-logo {
   font-family: 'Kaushan Script', cursive;
@@ -207,30 +215,51 @@ body {
           flex-grow: 1;
   -ms-flex-negative: 10;
       flex-shrink: 10;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
 }
-.nav-bar .menu-wrapper .menu-label {
+@media (min-width: 1170px) {
+  .nav-bar .menu-wrapper {
+    width: 50%;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+}
+.nav-bar .menu-wrapper .toggle-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.nav-bar .menu-wrapper .toggle-wrapper .menu-label {
+  -webkit-box-flex: 0.001;
+      -ms-flex-positive: 0.001;
+          flex-grow: 0.001;
+  padding: 0.8em 0;
   position: relative;
-  display: block;
 }
-.nav-bar .menu-wrapper .menu-label.menu-opened {
+.nav-bar .menu-wrapper .toggle-wrapper .menu-label.menu-opened {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
-  -webkit-transform: translateX(140%);
-          transform: translateX(140%);
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  width: 0;
 }
-.nav-bar .menu-wrapper .menu-label:not(.menu-opened) {
+.nav-bar .menu-wrapper .toggle-wrapper .menu-label:not(.menu-opened) {
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   -webkit-transform: translateX(0);
           transform: translateX(0);
 }
-.nav-bar .menu-wrapper .menu-toggle {
+.nav-bar .menu-wrapper .toggle-wrapper .menu-toggle {
   position: relative;
   padding: 18px 11px;
-  margin-left: 1em;
   width: 26px;
   height: 12px;
   z-index: 1;
@@ -242,49 +271,72 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
-.nav-bar .menu-wrapper .menu-toggle:hover {
+.nav-bar .menu-wrapper .toggle-wrapper .menu-toggle:hover {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   background: #7beec7;
 }
-.nav-bar .menu-wrapper .menu-toggle.menu-opened {
+.nav-bar .menu-wrapper .toggle-wrapper .menu-toggle.menu-opened {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   background: #7beec7;
 }
-.nav-bar .menu-wrapper .menu-toggle:not(.menu-opened) {
+.nav-bar .menu-wrapper .toggle-wrapper .menu-toggle:not(.menu-opened) {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   background: tranparent;
 }
-.nav-bar .menu-wrapper .menu-toggle .icon {
+.nav-bar .menu-wrapper .toggle-wrapper .menu-toggle .icon {
   background-image: url("/src/img/hamburger.png");
   width: 26px;
   height: 12px;
 }
 .nav-bar .menu-wrapper .menu {
-  background: tranparent;
-  list-style-type: none;
-  height: 3em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  min-height: 3em;
   overflow: hidden;
 }
 .nav-bar .menu-wrapper .menu a {
   margin: 1em;
   white-space: nowrap;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+@media (min-width: 1170px) {
+  .nav-bar .menu-wrapper .menu a {
+    -ms-flex-preferred-size: 0;
+        flex-basis: 0;
+  }
 }
 .nav-bar .menu-wrapper .menu.menu-opened {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
-  -webkit-box-flex: 0.45;
-      -ms-flex-positive: 0.45;
-          flex-grow: 0.45;
+  -webkit-box-flex: 0.4;
+      -ms-flex-positive: 0.4;
+          flex-grow: 0.4;
   -ms-flex-negative: 0;
       flex-shrink: 0;
-  width: 5em;
+  width: 100%;
+}
+@media (min-width: 1170px) {
+  .nav-bar .menu-wrapper .menu.menu-opened {
+    max-height: 3em;
+    width: 6em;
+  }
 }
 .nav-bar .menu-wrapper .menu:not(.menu-opened) {
   -webkit-transition: all 0.5s;
@@ -292,6 +344,7 @@ body {
   -webkit-box-flex: 0.001;
       -ms-flex-positive: 0.001;
           flex-grow: 0.001;
+  height: 0;
   width: 0;
 }
 .header {
@@ -463,7 +516,7 @@ body {
       -ms-flex-positive: 0;
           flex-grow: 0;
   margin-bottom: 30px;
-  width: calc(370px);
+  width: 370px;
   height: calc(430px - 30px);
   position: relative;
 }
@@ -486,10 +539,76 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: calc(375px - 40px - 60px);
+  width: calc(370px - 40px - 6px);
   height: calc(395px - 40px);
   padding: 20px;
+  background: rgba(123,238,199,0.75);
   z-index: 2;
+}
+.product-box .overlay:hover {
+  opacity: 1;
+  border: 3px solid #000;
+}
+.product-box .overlay .cross {
+  position: relative;
+  left: 40%;
+  top: 20%;
+  width: 70px;
+  height: 70px;
+}
+.product-box .overlay .cross .vertical {
+  position: relative;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  border-left: 1px solid #000;
+}
+.product-box .overlay .cross .horizontal {
+  width: 100%;
+  border-top: 1px solid #000;
+}
+.product-box .overlay .heart {
+  font-family: 'Source Code Pro', monospace;
+}
+.product-box .overlay .heart .heart-symbol {
+  font-weight: 100;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  left: 6px;
+  top: -10px;
+}
+.product-box .overlay .heart .heart-value {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  position: relative;
+  top: -10px;
+}
+.product-box .overlay .product-titles {
+  position: relative;
+  height: 3em;
+  top: 55%;
+  text-transform: uppercase;
+}
+.product-box .overlay .product-titles .product-title {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  position: relative;
+}
+.product-box .overlay .product-titles .product-title h3 {
+  font-weight: 900;
+}
+.product-box .overlay .product-titles .product-subtitle {
+  font-weight: 100;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  position: relative;
+}
+.product-box .overlay .product-titles .product-subtitle h4 {
+  font-weight: 100;
 }
 .refresh {
   display: -webkit-box;

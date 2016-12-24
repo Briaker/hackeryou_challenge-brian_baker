@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 	$(".menu-toggle").click(function() {
-		var menu = $(this).siblings(".menu");
+		var menu = $(this).parent().siblings(".menu");
 		var menuToggle = $(this);
 		var label = $(this).siblings(".menu-label");
 		if (menu) {

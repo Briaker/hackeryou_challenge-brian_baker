@@ -32,7 +32,7 @@ body
 
 
 .debug-info
-  position absolute
+  position fixed
   top 0 
   left 0
   
@@ -136,9 +136,13 @@ body
 
 .nav-bar
   display flex
+  flex-flow column wrap
   align-items center
-  height 100px
+  min-height 100px
   margin-bottom 0.75em
+
+  @media $desktop
+    flex-flow row wrap
   
   .oak-logo
     font-family 'Kaushan Script', cursive
@@ -159,73 +163,95 @@ body
       padding-left 0em
   
   .menu-wrapper
-    // position relative
     display flex
     flex-grow 1
     flex-shrink 10
-    justify-content flex-end
+    justify-content flex-start
+    flex-wrap wrap
+    width 100%
 
-    .menu-label
-      position relative
-      display block
+    @media $desktop
+      width 50%
+      justify-content flex-end
 
-      &.menu-opened
-        transition all 0.5s
-        transform translateX(140%)
-
-      &:not(.menu-opened)
-        transition all 0.5s
-        transform translateX(0)
-        
-
-    .menu-toggle
-      position relative
-      padding 18px 11px
-      margin-left 1em
-      width 26px
-      height 12px
-      z-index 1
-      user-select none
-      cursor pointer
+    .toggle-wrapper
       display flex
-  
-      &:hover
-        transition all 0.5s
-        background #7beec7
 
-      &.menu-opened
-        transition all 0.5s
-        background #7beec7
+      .menu-label
+        flex-grow 0.001
+        padding 0.8em 0
+        position relative
+        // flex-basis 100%
 
-      &:not(.menu-opened)
-        transition all 0.5s
-        background tranparent
+        &.menu-opened
+          transition all 0.5s
+          transform translateX(100%)
+          width 0
 
-      .icon
-         background-image url("/src/img/hamburger.png")
-         width 26px
-         height 12px
+        &:not(.menu-opened)
+          flex-basis 0
+          transition all 0.5s
+          transform translateX(0)
+
+      .menu-toggle
+        position relative
+        padding 18px 11px
+        width 26px
+        height 12px
+        z-index 1
+        user-select none
+        cursor pointer
+        display flex
+        flex-grow 1
+
+    
+        &:hover
+          transition all 0.5s
+          background #7beec7
+
+        &.menu-opened
+          transition all 0.5s
+          background #7beec7
+
+        &:not(.menu-opened)
+          transition all 0.5s
+          background tranparent
+
+        .icon
+           background-image url("/src/img/hamburger.png")
+           width 26px
+           height 12px
 
     .menu
-      background tranparent
-      list-style-type none
-      height 3em
       display flex
+      flex-wrap wrap
+      min-height 3em
       overflow hidden
 
       a
         margin 1em
         white-space nowrap
+        flex-basis 100%
+        display flex
+        justify-content center
+        
+        @media $desktop
+          flex-basis 0
 
       &.menu-opened
         transition all 0.5s
-        flex-grow 0.45
+        flex-grow 0.4
         flex-shrink 0
-        width 5em
+        width 100%
+        
+        @media $desktop
+          max-height 3em
+          width 6em
 
       &:not(.menu-opened)
         transition all 0.5s
         flex-grow 0.001
+        height 0
         width 0
 
 
@@ -349,111 +375,97 @@ body
 .product-box
   flex-grow 0
   margin-bottom 30px
-  width calc(370px)
+  width 370px
   height calc(430px - 30px)
   position relative
 
-  // every other
   @media $tablet
     &:nth-child(odd)
       margin-right 30px
 
-  // every 3rd
-  // @media $desktop
-  //   &:nth-child(3n+2)
-  //     margin-right 30px
-  //     margin-left 30px
-
   @media $desktop
+
+    // A quick workaround to avoid media query propties from overlapping
     &:nth-child(odd)
       margin-right 0
+
     &:nth-child(3n+2)
       margin-right 30px
       margin-left 30px
-
 
   .overlay 
     opacity 0
     position absolute
     top 0
     left 0
-    width calc(375px - 40px - 60px)
+    width calc(370px - 40px - 6px)
     height calc(395px - 40px)
     padding 20px
+    background rgba(123, 238, 199, 0.75)
     z-index 2
-  // .overlay 
-  //   opacity 0
-  //   position absolute
-  //   top 0
-  //   left 0
-  //   width calc(375px - 40px - 60px)
-  //   height calc(395px - 40px)
-  //   padding 20px
-  //   background rgba(123, 238, 199, 0.75)
-  //   z-index 2
     
-  //   &:hover
-  //     opacity 1
-  //     border 3px solid #000
+    &:hover
+      opacity 1
+      border 3px solid #000
   
-  //   .cross
-  //     position relative
-  //     left 40%
-  //     top 20%
-  //     width 70px
-  //     height 70px
+    .cross
+      position relative
+      left 40%
+      top 20%
+      width 70px
+      height 70px
       
-  //     .vertical
-  //       position relative
-  //       height 100%
-  //       left 50%
-  //       top 50%
-  //       border-left 1px solid #000
+      .vertical
+        position relative
+        height 100%
+        left 50%
+        top 50%
+        border-left 1px solid #000
       
-  //     .horizontal
-  //       width 100%
-  //       border-top 1px solid #000
+      .horizontal
+        width 100%
+        border-top 1px solid #000
 
-  //   .heart
-  //     font-family 'Source Code Pro', monospace
+    .heart
+      font-family 'Source Code Pro', monospace
       
-  //     .heart-symbol
-  //       font-weight 100
-  //       padding 0
-  //       margin 0
-  //       position relative
-  //       left 6px
-  //       top -10px
+      .heart-symbol
+        font-weight 100
+        padding 0
+        margin 0
+        position relative
+        left 6px
+        top -10px
       
-  //     .heart-value
-  //       margin 0
-  //       padding 0
-  //       line-height 0
-  //       position relative
-  //       top -10px
+      .heart-value
+        margin 0
+        padding 0
+        line-height 0
+        position relative
+        top -10px
     
-  //   .product-titles
-  //     position relative
-  //     height 3em
-  //     top 55%
-  //     text-transform uppercase
+    .product-titles
+      position relative
+      height 3em
+      top 55%
+      text-transform uppercase
       
-  //     .product-title
-  //       h3
-  //         font-weight 900
-  //       margin 0
-  //       padding 0
-  //       line-height 0
-  //       position relative
+      .product-title
+        h3
+          font-weight 900
+        margin 0
+        padding 0
+        line-height 0
+        position relative
       
-  //     .product-subtitle
-  //       h4
-  //         font-weight 100
-  //       font-weight 100
-  //       margin 0
-  //       padding 0
-  //       line-height 0
-  //       position relative
+      .product-subtitle
+        h4
+          font-weight 100
+        font-weight 100
+        margin 0
+        padding 0
+        line-height 0
+        position relative
 
 
 .refresh
