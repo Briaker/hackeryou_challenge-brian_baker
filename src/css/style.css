@@ -26,24 +26,6 @@ body {
   margin: 0;
   padding: 0;
 }
-.debug-info {
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-.debug-info::before {
-  content: "Phone";
-}
-@media (min-width: 768px) {
-  .debug-info::before {
-    content: "Tablet";
-  }
-}
-@media (min-width: 1170px) {
-  .debug-info::before {
-    content: "Desktop";
-  }
-}
 .wrapper {
   min-height: 800px;
   max-width: 1170px;
@@ -67,9 +49,6 @@ body {
   margin-bottom: 6em;
   -ms-flex-preferred-size: 100%;
       flex-basis: 100%;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 @media (min-width: 768px) {
   .wrapper > * {
@@ -81,7 +60,7 @@ body {
   }
 }
 .inner-wrapper {
-  margin-top: 5em;
+  margin-top: 2em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -154,6 +133,7 @@ body {
           flex-grow: 1;
   text-transform: uppercase;
   text-align: left;
+  line-height: 1.5em;
 }
 .subtitle h1,
 .subtitle h2,
@@ -175,6 +155,8 @@ body {
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  margin-bottom: 0;
+  min-height: 8em;
   -ms-flex-preferred-size: auto;
       flex-basis: auto;
   -ms-flex-flow: row wrap;
@@ -185,8 +167,6 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  min-height: 100px;
-  margin-bottom: 0.75em;
 }
 @media (min-width: 1170px) {
   .nav-bar {
@@ -209,6 +189,15 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
 }
+@media (min-width: 1170px) {
+  .nav-bar .oak-logo-wrapper {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -ms-flex-preferred-size: 0%;
+        flex-basis: 0%;
+  }
+}
 .nav-bar .oak-logo-wrapper .oak-logo {
   font-family: 'Kaushan Script', cursive;
   max-width: 6em;
@@ -230,14 +219,15 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
 }
 @media (min-width: 1170px) {
   .nav-bar .menu-wrapper {
     -webkit-box-flex: 1;
         -ms-flex-positive: 1;
             flex-grow: 1;
-    -ms-flex-preferred-size: 100%;
-        flex-basis: 100%;
+    -ms-flex-preferred-size: 60%;
+        flex-basis: 60%;
     width: 50%;
     -webkit-box-pack: end;
         -ms-flex-pack: end;
@@ -262,7 +252,6 @@ body {
   -webkit-transform: translateX(100%);
           transform: translateX(100%);
   width: 0;
-  padding-left: 1em;
 }
 .nav-bar .menu-wrapper .toggle-wrapper .menu-label:not(.menu-opened) {
   -ms-flex-preferred-size: 0;
@@ -295,7 +284,7 @@ body {
   transition: all 0.5s;
   background: #7beec7;
 }
-.nav-bar .menu-wrapper .toggle-wrapper .menu-toggle:hover.with-label {
+.nav-bar .menu-wrapper .toggle-wrapper .menu-toggle.with-label:hover:not(.menu-opened) {
   margin-left: 1em;
 }
 .nav-bar .menu-wrapper .toggle-wrapper .menu-toggle.menu-opened {
@@ -317,9 +306,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  min-height: 3em;
+  height: 48px;
   overflow: hidden;
 }
 .nav-bar .menu-wrapper .menu a {
@@ -343,9 +330,9 @@ body {
 .nav-bar .menu-wrapper .menu.menu-opened {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
-  -webkit-box-flex: 0.4;
-      -ms-flex-positive: 0.4;
-          flex-grow: 0.4;
+  -webkit-box-flex: 0.45;
+      -ms-flex-positive: 0.45;
+          flex-grow: 0.45;
   -ms-flex-negative: 0;
       flex-shrink: 0;
   width: 100%;
@@ -489,7 +476,7 @@ body {
   }
 }
 .choose {
-  padding: 0 4em;
+  padding: 0 5em;
 }
 .choose .subtitle {
   letter-spacing: 0.1em;
@@ -514,6 +501,11 @@ body {
   }
   .choose .info-box:last-child {
     padding-right: 0;
+  }
+}
+@media (min-width: 1170px) {
+  .choose {
+    padding: 0;
   }
 }
 .our-work {
@@ -642,6 +634,18 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   padding-bottom: 1em;
+}
+.refresh:hover img {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.refresh:not(:hover) img {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
 }
 .email-signup {
   display: -webkit-box;

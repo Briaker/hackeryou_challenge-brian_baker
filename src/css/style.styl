@@ -1,6 +1,3 @@
-// Import all partials
-// @require './_*.styl'
-
 $tablet = "(min-width: 768px)"
 $desktop = "(min-width: 1170px)"
 
@@ -31,19 +28,19 @@ body
   padding 0
 
 
-.debug-info
-  position fixed
-  top 0 
-  left 0
+// .debug-info
+//   position fixed
+//   top 0 
+//   left 0
   
-  &::before
-    content "Phone"
+//   &::before
+//     content "Phone"
     
-    @media $tablet
-      content "Tablet"
+//     @media $tablet
+//       content "Tablet"
 
-    @media $desktop
-      content "Desktop"
+//     @media $desktop
+//       content "Desktop"
 
 
 .wrapper
@@ -58,32 +55,21 @@ body
   flex-grow 1
   flex-flow row wrap
 
-
 .wrapper > *
-  // &:not(:last-child)
   margin-bottom 6em
   flex-basis 100%
-  justify-content center
+  // border 3px solid goldenrod // debug
   
   @media $tablet
     flex-basis 100%
     justify-content center
-    // padding 6em
-
-  // @media $desktop 
-  //   justify-content flew-start
-  //   flex-basis 100%
 
 
 .inner-wrapper
-  // height 400px
-  margin-top 5em
+  margin-top 2em
   display flex
   flex-flow row wrap
   justify-content center
-
-  // @media $desktop
-  //   justify-content space-between
 
 
 .title
@@ -126,6 +112,8 @@ body
   flex-grow 1
   text-transform uppercase
   text-align left
+  line-height 1.5em
+  
   h1, h2, h3
     font-family 'Source Code Pro', monospace
 
@@ -139,12 +127,12 @@ body
 .nav-bar
   display flex
   width 100%
+  margin-bottom 0
+  min-height 8em
   flex-basis auto
   flex-flow row wrap
   justify-content center
   align-items center
-  min-height 100px
-  margin-bottom 0.75em
 
   @media $desktop
     flex-flow row wrap
@@ -155,6 +143,10 @@ body
     flex-basis 100%
     display flex
     justify-content center
+
+    @media $desktop
+      justify-content flex-start
+      flex-basis 0%
 
     .oak-logo
       font-family 'Kaushan Script', cursive
@@ -173,11 +165,11 @@ body
   
   .menu-wrapper
     display flex
-    
+    position relative
 
     @media $desktop
       flex-grow 1
-      flex-basis 100%
+      flex-basis 60%
       width 50%
       justify-content flex-end
 
@@ -193,7 +185,6 @@ body
           transition all 0.5s
           transform translateX(100%)
           width 0
-          padding-left 1em
 
         &:not(.menu-opened)
           flex-basis 0
@@ -211,13 +202,14 @@ body
         display flex
         flex-grow 1
 
-    
         &:hover
           transition all 0.5s
           background #7beec7
 
-          &.with-label
-            margin-left 1em
+        &.with-label
+          &:hover
+            &:not(.menu-opened) 
+              margin-left 1em
 
         &.menu-opened
           transition all 0.5s
@@ -226,6 +218,7 @@ body
         &:not(.menu-opened)
           transition all 0.5s
           background tranparent
+          
 
         .icon
            background-image url("/src/img/hamburger.png")
@@ -234,8 +227,8 @@ body
 
     .menu
       display flex
-      flex-wrap wrap
-      min-height 3em
+      // flex-wrap wrap
+      height 48px
       overflow hidden
 
       a
@@ -250,7 +243,7 @@ body
 
       &.menu-opened
         transition all 0.5s
-        flex-grow 0.4
+        flex-grow 0.45
         flex-shrink 0
         width 100%
         
@@ -327,7 +320,7 @@ body
 
 .history
   padding 0 5em
-  // height 500px
+
   p
     padding-top 1.5em
 
@@ -335,6 +328,9 @@ body
     padding 0 10em 0 0
     flex-basis 0px
     flex-grow 1
+
+// .history > *
+//   border 3px solid salmon // debug
 
 
 .history-image
@@ -348,9 +344,8 @@ body
     flex-basis 471px
 
 
-
 .choose
-  padding 0 4em
+  padding 0 5em
   
   .subtitle
     letter-spacing 0.1em
@@ -372,6 +367,8 @@ body
       &:last-child
         padding-right 0
 
+  @media $desktop
+    padding 0
 
 .our-work
   padding 0 5em
@@ -489,6 +486,17 @@ body
   justify-content center
   padding-bottom 1em
 
+  &:hover
+    img
+      transition all 0.3s
+      transform rotate(180deg)
+
+  &:not(:hover)
+    img
+      transition all 0.3s
+      transform rotate(0deg)
+
+
 .email-signup
   display flex
   flex-flow row wrap
@@ -566,8 +574,6 @@ body
         border 1px solid #e6e6e6
         padding 0 1.5em
 
-    // 9cf2d5 light
-    // 75e2bd dark
 
 .footer
   min-height 300px
