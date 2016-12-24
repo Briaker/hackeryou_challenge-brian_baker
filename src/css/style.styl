@@ -48,8 +48,8 @@ body
 
 .wrapper
   min-height 800px
-  max-width: 1170px
-  width 100%
+  max-width 1170px
+  width auto
   margin 0px
   padding 0px
   display flex
@@ -125,7 +125,9 @@ body
   flex-basis 100%
   flex-grow 1
   text-transform uppercase
-  text-align center
+  text-align left
+  h1, h2, h3
+    font-family 'Source Code Pro', monospace
 
   @media $tablet
     text-align left
@@ -136,41 +138,46 @@ body
 
 .nav-bar
   display flex
-  flex-flow column wrap
+  width 100%
+  flex-basis auto
+  flex-flow row wrap
+  justify-content center
   align-items center
   min-height 100px
   margin-bottom 0.75em
 
   @media $desktop
     flex-flow row wrap
-  
-  .oak-logo
-    font-family 'Kaushan Script', cursive
+
+  .oak-logo-wrapper
     flex-shrink 0
     flex-grow 1
-    max-width 6em
-    padding-left 1em
+    flex-basis 100%
+    display flex
+    justify-content center
 
-    h1
-      margin 0 0.4em 0 0.2em
-    
-    .strike-through
-      border-bottom 3px double #111
-      position relative
-      top -1.5em
+    .oak-logo
+      font-family 'Kaushan Script', cursive
+      max-width 6em
+      
+      h1
+        margin 0 0.4em 0 0.2em
+      
+      .strike-through
+        border-bottom 3px double #111
+        position relative
+        top -1.5em
 
-    @media $desktop
-      padding-left 0em
+      @media $desktop
+        padding-left 0em
   
   .menu-wrapper
     display flex
-    flex-grow 1
-    flex-shrink 10
-    justify-content flex-start
-    flex-wrap wrap
-    width 100%
+    
 
     @media $desktop
+      flex-grow 1
+      flex-basis 100%
       width 50%
       justify-content flex-end
 
@@ -181,12 +188,12 @@ body
         flex-grow 0.001
         padding 0.8em 0
         position relative
-        // flex-basis 100%
 
         &.menu-opened
           transition all 0.5s
           transform translateX(100%)
           width 0
+          padding-left 1em
 
         &:not(.menu-opened)
           flex-basis 0
@@ -208,6 +215,9 @@ body
         &:hover
           transition all 0.5s
           background #7beec7
+
+          &.with-label
+            margin-left 1em
 
         &.menu-opened
           transition all 0.5s
@@ -247,6 +257,7 @@ body
         @media $desktop
           max-height 3em
           width 6em
+          padding 0 2em
 
       &:not(.menu-opened)
         transition all 0.5s
@@ -316,7 +327,9 @@ body
 
 .history
   padding 0 5em
-  height 500px
+  // height 500px
+  p
+    padding-top 1.5em
 
   @media $desktop
     padding 0 10em 0 0
@@ -326,12 +339,14 @@ body
 
 .history-image
   background-image none
+  margin-bottom 0
 
   @media $desktop
     background-image url("/src/img/history.jpg")
     flex-grow 0
     flex-shrink 0
     flex-basis 471px
+
 
 
 .choose
@@ -496,7 +511,6 @@ body
     letter-spacing 0.1em
     
     .left-inner
-      width calc(100% - 100px)
       height calc(100% - 100px)
       margin 50px
       display flex

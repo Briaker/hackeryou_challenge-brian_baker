@@ -47,7 +47,7 @@ body {
 .wrapper {
   min-height: 800px;
   max-width: 1170px;
-  width: 100%;
+  width: auto;
   margin: 0px;
   padding: 0px;
   display: -webkit-box;
@@ -153,7 +153,12 @@ body {
       -ms-flex-positive: 1;
           flex-grow: 1;
   text-transform: uppercase;
-  text-align: center;
+  text-align: left;
+}
+.subtitle h1,
+.subtitle h2,
+.subtitle h3 {
+  font-family: 'Source Code Pro', monospace;
 }
 @media (min-width: 768px) {
   .subtitle {
@@ -169,8 +174,14 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-flow: column wrap;
-      flex-flow: column wrap;
+  width: 100%;
+  -ms-flex-preferred-size: auto;
+      flex-basis: auto;
+  -ms-flex-flow: row wrap;
+      flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -183,26 +194,35 @@ body {
         flex-flow: row wrap;
   }
 }
-.nav-bar .oak-logo {
-  font-family: 'Kaushan Script', cursive;
+.nav-bar .oak-logo-wrapper {
   -ms-flex-negative: 0;
       flex-shrink: 0;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  max-width: 6em;
-  padding-left: 1em;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
-.nav-bar .oak-logo h1 {
+.nav-bar .oak-logo-wrapper .oak-logo {
+  font-family: 'Kaushan Script', cursive;
+  max-width: 6em;
+}
+.nav-bar .oak-logo-wrapper .oak-logo h1 {
   margin: 0 0.4em 0 0.2em;
 }
-.nav-bar .oak-logo .strike-through {
+.nav-bar .oak-logo-wrapper .oak-logo .strike-through {
   border-bottom: 3px double #111;
   position: relative;
   top: -1.5em;
 }
 @media (min-width: 1170px) {
-  .nav-bar .oak-logo {
+  .nav-bar .oak-logo-wrapper .oak-logo {
     padding-left: 0em;
   }
 }
@@ -210,20 +230,14 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  -ms-flex-negative: 10;
-      flex-shrink: 10;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  width: 100%;
 }
 @media (min-width: 1170px) {
   .nav-bar .menu-wrapper {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
     width: 50%;
     -webkit-box-pack: end;
         -ms-flex-pack: end;
@@ -248,6 +262,7 @@ body {
   -webkit-transform: translateX(100%);
           transform: translateX(100%);
   width: 0;
+  padding-left: 1em;
 }
 .nav-bar .menu-wrapper .toggle-wrapper .menu-label:not(.menu-opened) {
   -ms-flex-preferred-size: 0;
@@ -279,6 +294,9 @@ body {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   background: #7beec7;
+}
+.nav-bar .menu-wrapper .toggle-wrapper .menu-toggle:hover.with-label {
+  margin-left: 1em;
 }
 .nav-bar .menu-wrapper .toggle-wrapper .menu-toggle.menu-opened {
   -webkit-transition: all 0.5s;
@@ -336,6 +354,7 @@ body {
   .nav-bar .menu-wrapper .menu.menu-opened {
     max-height: 3em;
     width: 6em;
+    padding: 0 2em;
   }
 }
 .nav-bar .menu-wrapper .menu:not(.menu-opened) {
@@ -439,7 +458,9 @@ body {
 }
 .history {
   padding: 0 5em;
-  height: 500px;
+}
+.history p {
+  padding-top: 1.5em;
 }
 @media (min-width: 1170px) {
   .history {
@@ -453,6 +474,7 @@ body {
 }
 .history-image {
   background-image: none;
+  margin-bottom: 0;
 }
 @media (min-width: 1170px) {
   .history-image {
@@ -655,7 +677,6 @@ body {
   letter-spacing: 0.1em;
 }
 .email-signup .left .left-inner {
-  width: calc(100% - 100px);
   height: calc(100% - 100px);
   margin: 50px;
   display: -webkit-box;
